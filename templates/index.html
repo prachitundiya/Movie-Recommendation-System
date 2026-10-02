@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Movie Recommendation System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="hero">
+
+            <div class="movie-icon">
+                🎬
+            </div>
+
+            <h1>
+                Movie Recommendation System
+            </h1>
+
+            <p class="subtitle">
+                Discover movies similar to your favorites
+            </p>
+
+
+            <form action="/recommend" method="post">
+
+                <label for="title">
+                    Enter a movie title
+                </label>
+
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="e.g. Moonraker"
+                        autocomplete="off"
+                        required
+                    >
+
+
+                    <button type="submit">
+                        🔍 Recommend
+                    </button>
+
+                </div>
+
+            </form>
+
+
+            <div class="info-section">
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        🧠
+                    </div>
+
+                    <h3>
+                        Content-Based
+                    </h3>
+
+                    <p>
+                        Recommendations are generated
+                        using movie metadata.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        🔎
+                    </div>
+
+                    <h3>
+                        Smart Matching
+                    </h3>
+
+                    <p>
+                        Movies are compared using
+                        genres, cast, director and more.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        ⚡
+                    </div>
+
+                    <h3>
+                        Fast Results
+                    </h3>
+
+                    <p>
+                        Get similar movies instantly
+                        through the web application.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Movie Recommendations</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="results-header">
+
+            <div class="movie-icon">🎬</div>
+
+            <h1>Recommendations</h1>
+
+            <p>
+                Movies similar to
+                <strong>"{{ movie }}"</strong>
+            </p>
+
+        </div>
+
+
+        <div class="movie-grid">
+
+            {% for rec in recommendations %}
+
+                {% if rec is mapping %}
+
+                    <div class="movie-card">
+
+                        <div class="card-icon">
+                            🎥
+                        </div>
+
+                        <h2>
+                            {{ rec.title }}
+                        </h2>
+
+
+                        <div class="movie-meta">
+
+                            {% if rec.release_date %}
+                                <span>
+                                    📅 {{ rec.release_date[:4] }}
+                                </span>
+                            {% endif %}
+
+                            {% if rec.runtime %}
+                                <span>
+                                    ⏱️ {{ rec.runtime|int }} min
+                                </span>
+                            {% endif %}
+
+                            {% if rec.rating %}
+                                <span>
+                                    ⭐ {{ "%.1f"|format(rec.rating) }}
+                                </span>
+                            {% endif %}
+
+                        </div>
+
+
+                        {% if rec.genres %}
+
+                            <p class="genres">
+                                {{ rec.genres }}
+                            </p>
+
+                        {% endif %}
+
+
+                        {% if rec.overview %}
+
+                            <p class="overview">
+                                {{ rec.overview[:180] }}
+                                {% if rec.overview|length > 180 %}
+                                    ...
+                                {% endif %}
+                            </p>
+
+                        {% endif %}
+
+                    </div>
+
+                {% else %}
+
+                    <div class="error-message">
+                        {{ rec }}
+                    </div>
+
+                {% endif %}
+
+            {% endfor %}
+
+        </div>
+
+
+        <a href="/" class="back-button">
+            ← Search Another Movie
+        </a>
+
+    </div>
+
+</body>
+
+</html>
